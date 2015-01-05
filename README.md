@@ -1,4 +1,4 @@
-KnowreQuest
+Description
 ===========
 
-Knowre WebDevCurriculum Quests
+Submission page for Knowre internship quests.
