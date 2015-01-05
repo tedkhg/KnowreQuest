@@ -1,0 +1,73 @@
+<style type="text/css">
+	div {
+	    -moz-box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	html, body {height: 100%; overflow: hidden; margin:0}
+	nav {
+		background-color: #DDF0E4; 
+	}
+	ul {
+		list-style-type: none;
+	}
+	ul > li {
+		padding-top: 10px;
+	}
+	a {
+		text-decoration: none;
+		color: black;
+	}
+
+	.container {
+		position: relative;
+		height: 100%;
+		overflow: auto;
+	}
+	#sideBar {
+		background-color: #DDF0E4; 
+		position: absolute;
+		left: 0px;
+		width: 15%;
+		height: 100%;
+	}
+	#mailBox {
+		font-family:'nanumgothic', '나눔고딕';
+		margin-left: 15%;
+	}
+	#mailBox input:nth-of-type(1), #mailBox input:nth-of-type(1)~div:nth-of-type(1), 
+	#mailBox input:nth-of-type(2), #mailBox input:nth-of-type(2)~div:nth-of-type(2),
+	#mailBox input:nth-of-type(3), #mailBox input:nth-of-type(3)~div:nth-of-type(3) {
+		display: none;
+	} 
+	#mailBox input:nth-of-type(1):checked ~ div:nth-of-type(1),
+	#mailBox input:nth-of-type(2):checked ~ div:nth-of-type(2),
+	#mailBox input:nth-of-type(3):checked ~ div:nth-of-type(3) {
+		display: block;
+	}
+	#mailBox > label {
+		display: inline-block;
+		text-align: center;
+		background-color: #EEF1EF;
+		width: 100px;
+		height: 40px;
+		border: 1px black;
+		line-height: 1.8em;
+	}
+	#mailBox > label:hover {
+		cursor: pointer;
+	}
+	#mailBox input:nth-of-type(1):checked ~ label:nth-of-type(1) {
+		background-color: #FBFDFC;
+	}
+	#mailBox input:nth-of-type(2):checked ~ label:nth-of-type(2) {
+		background-color: #FBFDFC;
+	}
+	#mailBox input:nth-of-type(3):checked ~ label:nth-of-type(3) {
+		background-color: #FBFDFC;
+	}
+	.content1 {
+		background-color: #FBFDFC;
+	}
+
+	</style>
