@@ -8,7 +8,7 @@
 	    -webkit-box-sizing: border-box;
 	    box-sizing: border-box;
 	}
-	html, body {height: 100%; overflow: hidden;}
+	html, body {height: 100%; overflow: hidden; padding: 0; margin: 0}
 	.container {
 		position: relative;
 		height: 100%;
@@ -22,12 +22,10 @@
 		background-color: red;
 	}
 	#middle {
-		background-color: blue;
+		/*position: relative;*/
 		margin-left: 200px;
 		margin-right: 300px;
-		height: calc(100% - 30px);
-		height: -moz-calc(100% - 30px);
-		height: -webkit-calc(100% - 30px);
+		height: 100%;
 	}
 	#top {
 		margin-left: 200px;
@@ -44,11 +42,22 @@
 		background-color: red;
 	}
 	#bottom {
-		position: absolute;
+		/*position: absolute;*/
+		position: fixed;
 		width: 100%;
 		bottom: 0px;
 		height: 50px;
 		background-color: green;
+	}
+	#content{
+		height: 100%;
+		background-color: blue;
+	}
+	#pad {
+		width: 100%;
+		bottom: 0px;
+		position: absolute;
+		height: 50px;
 	}
 	</style>
 </head>
@@ -56,19 +65,16 @@
 <body>
 	<div class="container">
 		<div id="left">
-			Hello 
 		</div>
 		<div id="top">
-			z
 		</div>
 		<div id="middle">
-			world<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<div id="content">
+			</div>
 		</div>
 		<div id="right">
-			!
-		</div>
-	<div>
-	<div id="bottom">
-		x
+		</div><div id="bottom">
 	</div>
+	<div>
+	
 </body>
