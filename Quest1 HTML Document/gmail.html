@@ -1,41 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title> Gmail </title>
+	<title>Gmail</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="./gmail.css">
+	<link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+	<link href="./favicon-gmail.ico" rel="icon" type="image/x-icon" />
 </head>
 <body>
-	<h1>Gmail</h1>
-	<ul>
-		<li>
-			Kim Hong Gi<br>
-			Nice to meet you
-			<p>Content....</p>
-		</li>
-		<li>
-			Knowre<br>
-			Hello World
-			<p>Content....</p>
-		</li>
-		<li>
-			Name1<br>
-			Subject1
-			<p>Content1....</p>
-		</li>
-		<li>
-			Name2<br>
-			What's your name?
-			<p>Content2....</p>
-		</li>
-		<li>
-			Jeff<br>
-			Nice to meet you
-			<p>Content....</p>
-		</li>
-		<li>
-			Kim Hong Gi<br>
-			Nice to meet you
-			<p>Content....</p>
-		</li>
-	</ul>
+	<nav>
+		<span style="font-family: 'Slabo 27px', serif; font-size:48px; padding-right:50px; margin-left:50px">Google</span>
+		<input type="text" size="50" height="30px" name="searchForm"><input id="searchButton" type="submit" value="       ">
+                <div style="height:58px; line-height:58px; padding-right:20px; float: right"><img src="./menu.svg" style="padding-right: 20px; vertical-align:middle; width:30px; height:30px;">hgkim@knowre.com <span style="font-size: 10px">▼</span></div>
+	</nav>
+        <nav>
+                <div style="display: inline-block; width: 235px"><span style="font-size: 20px; margin-left:55px;">Gmail <span style="font-size: 10px">▼</span></span></div>
+                <div style="display: inline-block; padding: 10px">
+                <button style="width: 80px; height: 40px" type="button"><img style="width:15px" src='./square.png'></button>
+                <button style="width: 80px; height: 40px" type="button"><img style="width:15px" src='./refresh.png'></button>
+                <button style="font-size: 15px; width: 80px; height: 40px" type="button">추가작업</button>
+                </div>
+                <div style="display: inline-block; width: 60%; float:right">
+                        <div style="display: inline-block; padding: 10px; float:right">
+                                <strong>129</strong>개 중 <strong>50</strong>
+                                <button style="font-size: 15px; width: 40px; height: 40px" type="button">&lt</button>
+                                <button style="font-size: 15px; width: 40px; height: 40px" type="button">&gt</button>
+                                <button style="width: 80px; height: 40px" type="button"><img style="width:15px" src='./gear.png'></button>
+                        </div>
+                </div>
+        </nav>
+	<div class="container">
+		<div id="sideBar">
+			<input id="writeMail" style="margin-top:40px; margin-left:45px" type="submit" value="편지쓰기"><br>
+			<ul style="padding-left: 65px;">
+				<li><a href="#"><strong>받은편지함</strong></a></li>
+				<li><a href="#">별표편지함</a></li>
+				<li><a href="#">중요편지함</a></li>
+				<li><a href="#">보낸편지함</a></li>
+				<li><a href="#">임시보관함</a></li>
+                                <li><a href="#">더보기 <span style="font-size: 10px">▼</span></a></li>
+			</ul>
+		</div>
+		<div id="mailBox">
+
+        	<div class="content1" id="mailList">
+        		<ul style="padding-left: 0px">
+        			<li style="width: 100% auto">
+                                        <div style="display:inline-block; width:250px; margin-left:-20px">
+                                        <img style="width:15px; padding-right:10px; padding-left: 20px" src='./square.png'><img style="width:15px" src='./star.png'>
+        				Kim Hong-gi
+                                        </div>
+                                        <div style="display:inline-block; width:800px auto; min-width:200px">
+        			             2015 New Year's Message
+        				<span style="color:gray">2015년 새해복 많이 받으세요</span>
+                                        </div>
+                                        <div style="display:inline-block; float:right; padding-right: 20px">
+                                                10:15
+                                        </div>
+        			</li>
+        			<li style="width: 100% auto">
+                                        <div style="display:inline-block; width:250px; margin-left:-20px">
+                                        <img style="width:15px; padding-right:10px; padding-left: 20px" src='./square.png'><img style="width:15px" src='./star.png'>
+                                        Kim Hong-gi
+                                        </div>
+                                        <div style="display:inline-block; width:800px auto; min-width:200px">
+                                             2015 New Year's Message
+                                        <span style="color:gray">2015년 새해복 많이 받으세요</span>
+                                        </div>
+                                        <div style="display:inline-block; float:right; padding-right: 20px">
+                                                10:15
+                                        </div>
+                                </li>
+                                <li style="width: 100% auto">
+                                        <div style="display:inline-block; width:250px; margin-left:-20px">
+                                        <img style="width:15px; padding-right:10px; padding-left: 20px" src='./square.png'><img style="width:15px" src='./star.png'>
+                                        Kim Hong-gi
+                                        </div>
+                                        <div style="display:inline-block; width:800px auto; min-width:200px">
+                                             2015 New Year's Message
+                                        <span style="color:gray">2015년 새해복 많이 받으세요</span>
+                                        </div>
+                                        <div style="display:inline-block; float:right; padding-right: 20px">
+                                                10:15
+                                        </div>
+                                </li>
+                                <li style="width: 100% auto">
+                                        <div style="display:inline-block; width:250px; margin-left:-20px">
+                                        <img style="width:15px; padding-right:10px; padding-left: 20px" src='./square.png'><img style="width:15px" src='./star.png'>
+                                        Kim Hong-gi
+                                        </div>
+                                        <div style="display:inline-block; width:800px auto; min-width:200px">
+                                             2015 New Year's Message
+                                        <span style="color:gray">2015년 새해복 많이 받으세요</span>
+                                        </div>
+                                        <div style="display:inline-block; float:right; padding-right: 20px">
+                                                10:15
+                                        </div>
+                                </li>
+                                <li style="width: 100% auto">
+                                        <div style="display:inline-block; width:250px; margin-left:-20px">
+                                        <img style="width:15px; padding-right:10px; padding-left: 20px" src='./square.png'><img style="width:15px" src='./star.png'>
+                                        Kim Hong-gi
+                                        </div>
+                                        <div style="display:inline-block; width:800px auto; min-width:200px">
+                                             2015 New Year's Message
+                                        <span style="color:gray">2015년 새해복 많이 받으세요</span>
+                                        </div>
+                                        <div style="display:inline-block; float:right; padding-right: 20px">
+                                                10:15
+                                        </div>
+                                </li>
+                                <li style="width: 100% auto">
+                                        <div style="display:inline-block; width:250px; margin-left:-20px">
+                                        <img style="width:15px; padding-right:10px; padding-left: 20px" src='./square.png'><img style="width:15px" src='./star.png'>
+                                        Kim Hong-gi
+                                        </div>
+                                        <div style="display:inline-block; width:800px auto; min-width:200px">
+                                             2015 New Year's Message
+                                        <span style="color:gray">2015년 새해복 많이 받으세요</span>
+                                        </div>
+                                        <div style="display:inline-block; float:right; padding-right: 20px">
+                                                10:15
+                                        </div>
+                                </li>
+                                <li style="width: 100% auto">
+                                        <div style="display:inline-block; width:250px; margin-left:-20px">
+                                        <img style="width:15px; padding-right:10px; padding-left: 20px" src='./square.png'><img style="width:15px" src='./star.png'>
+                                        Kim Hong-gi
+                                        </div>
+                                        <div style="display:inline-block; width:800px auto; min-width:200px">
+                                             2015 New Year's Message
+                                        <span style="color:gray">2015년 새해복 많이 받으세요</span>
+                                        </div>
+                                        <div style="display:inline-block; float:right; padding-right: 20px">
+                                                10:15
+                                        </div>
+                                </li>
+                                <li style="width: 100% auto">
+                                        <div style="display:inline-block; width:250px; margin-left:-20px">
+                                        <img style="width:15px; padding-right:10px; padding-left: 20px" src='./square.png'><img style="width:15px" src='./star.png'>
+                                        Kim Hong-gi
+                                        </div>
+                                        <div style="display:inline-block; width:800px auto; min-width:200px">
+                                             2015 New Year's Message
+                                        <span style="color:gray">2015년 새해복 많이 받으세요</span>
+                                        </div>
+                                        <div style="display:inline-block; float:right; padding-right: 20px">
+                                                10:15
+                                        </div>
+                                </li>
+                                <li style="width: 100% auto">
+                                        <div style="display:inline-block; width:250px; margin-left:-20px">
+                                        <img style="width:15px; padding-right:10px; padding-left: 20px" src='./square.png'><img style="width:15px" src='./star.png'>
+                                        Kim Hong-gi
+                                        </div>
+                                        <div style="display:inline-block; width:800px auto; min-width:200px">
+                                             2015 New Year's Message
+                                        <span style="color:gray">2015년 새해복 많이 받으세요</span>
+                                        </div>
+                                        <div style="display:inline-block; float:right; padding-right: 20px">
+                                                10:15
+                                        </div>
+                                </li>
+                                <li style="width: 100% auto">
+                                        <div style="display:inline-block; width:250px; margin-left:-20px">
+                                        <img style="width:15px; padding-right:10px; padding-left: 20px" src='./square.png'><img style="width:15px" src='./star.png'>
+                                        Kim Hong-gi
+                                        </div>
+                                        <div style="display:inline-block; width:800px auto; min-width:200px">
+                                             2015 New Year's Message
+                                        <span style="color:gray">2015년 새해복 많이 받으세요</span>
+                                        </div>
+                                        <div style="display:inline-block; float:right; padding-right: 20px">
+                                                10:15
+                                        </div>
+                                </li>
+                                <li style="width: 100% auto">
+                                        <div style="display:inline-block; width:250px; margin-left:-20px">
+                                        <img style="width:15px; padding-right:10px; padding-left: 20px" src='./square.png'><img style="width:15px" src='./star.png'>
+                                        Kim Hong-gi
+                                        </div>
+                                        <div style="display:inline-block; width:800px auto; min-width:200px">
+                                             2015 New Year's Message
+                                        <span style="color:gray">2015년 새해복 많이 받으세요</span>
+                                        </div>
+                                        <div style="display:inline-block; float:right; padding-right: 20px">
+                                                10:15
+                                        </div>
+                                </li>
+        		</ul>
+        	</div>
+		</div>
+	</div>
 </body>
 </html>
