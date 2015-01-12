@@ -2,14 +2,24 @@
 <html>
 <head>
 	<title>Desktop</title>
+	<link rel="stylesheet" href="./desktop.css" />
+	<script src="./desktop2.js"></script>
 </head>
 <body>
-	each buttons are able to create more folders, icons.<br>
-	if you click folder twice, folder's window will be opened.<br>
-	if you click folder's window twice, it will be closed.<br>
-	One folder can make one window.<br>
-	<button onclick="createFolder()">Create Folder</button>
-	<button onclick="createIcon()">Create Icon</button>
+	<section class="desktop">
+	</section>
+
+	<section class="description">
+		each buttons are able to create more folders, icons.<br>
+		if you click folder twice, folder's window will be opened.<br>
+		if you click folder's window twice, it will be closed.<br>
+		One folder can make one window.<br>
+		<button class="createFolder">Create Folder</button>
+		<button class="createIcon">Create Icon</button>
+	</section>
+
+	<script>
+		var desktop = new Desktop();
+	</script>
 </body>
-	<script src="./desktop.js"></script>
 </html>
