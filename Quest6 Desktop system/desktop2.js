@@ -29,7 +29,9 @@ _.openWindow = function(icon) {
 	this.activeWindows.push(new Window(this, icon));
 };
 
-
+// _.closeWindow = function(window) {
+// 	this.desktop.dom[0].removeChild(window);
+// }
 
 var Icon = function(desktop, isFolder) {
 	this.desktop = desktop;
@@ -65,6 +67,21 @@ _._bindEvents = function() {
 			that.desktop.openWindow(that);
 		}
 	};
+
+	this.dom.onmousedown = function() {
+		var self = this;
+		this.onmousemove = function(e) {
+			self.style.left = e.pageX - 25 + 'px';
+			self.style.top = e.pageY - 25 + 'px';
+		}
+		self.onmouseup = function() {
+			self.onmousemove = null;
+		}
+	};
+
+	this.dom.ondragstart = function() { 
+		return false
+	};
 };
 
 
@@ -91,8 +108,52 @@ _._setDom = function() {
 	this.dom.innerHTML = '<div class="title">New window</div><div class="resize"></div>'
 
 	this.desktop.dom[0].appendChild(this.dom);
+	// this.dom2 = document.querySelectorAll('.resize');
 };
 
 _._bindEvents = function() {
-	;
+	var that = this;
+
+	this.dom.ondblclick = function() {
+		// that.desktop.closeWindow(this);
+		that.desktop.dom[0].removeChild(this);
+	};
+
+	this.dom.onmousedown = function() {
+		var self = this;
+
+		this.onmousemove = function(e) {
+			self.style.left = e.pageX - 25 + 'px';
+			self.style.top = e.pageY - 25 + 'px';
+		}
+		self.onmouseup = function() {
+			self.onmousemove = null;
+		}
+	};
+
+	this.dom.ondragstart = function() { 
+		return false
+	};
+
+// 	this.dom2[0].onmousedown = function() {
+// 		console.log('push');
+
+// 		this.onmousemove = function(e) {
+// 			var res = that.dom;
+// 			if(e.pageX > res.style.left + res.style.width - 5) {
+// 				res.style.width = res.style.width + 10 + 'px';
+// 				// res.style.height = res.style.height + 10 + 'px';
+// 			} else {
+// 				res.style.width = res.style.width - 10 + 'px';
+// 			}
+// 		}
+// 		self.onmouseup = function() {
+// 			self.onmousemove = null;
+// 		}
+// 	};
+
+// 	this.dom2.ondragstart = function() { 
+// 		console.log('drag');
+// 		// return false
+// 	};
 };
