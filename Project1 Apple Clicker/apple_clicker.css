@@ -63,11 +63,94 @@
 	font-family: "Orbitron Light", Verdana, Tahoma;
 }
 
-.mainTitle {
-	margin-left: 50px;
-	margin-top: 30px;
+.mainTop {
+	height: 10%;
+}
+
+.mainTitle {	
+	position: absolute;
+	top: 10px;
+	left: 40px;
 	font-size: 30px;
 	font-family: Arial;
+}
+
+.ipodArea{
+	/*position: absolute;*/
+	width: 100%;
+	height: 18%;
+	background-color: #E9E9E9;
+}
+
+.ipodType {
+	position: absolute;
+	left: 20px;
+	font-size: 20px;
+	font-family: "Orbitron Light", Verdana, Tahoma;
+}
+
+.iphoneArea{
+	/*position: absolute;*/
+	width: 100%;
+	height: 18%;
+	background-color: #DEDEDE;
+}
+
+.iphoneType {
+	position: absolute;
+	left: 20px;
+	font-size: 20px;
+	font-family: "Orbitron Light", Verdana, Tahoma;
+}
+
+.ipadArea{
+	/*position: absolute;*/
+	width: 100%;
+	height: 18%;
+	background-color: #E9E9E9;
+}
+
+.ipadType {
+	position: absolute;
+	left: 20px;
+	font-size: 20px;
+	font-family: "Orbitron Light", Verdana, Tahoma;
+}
+
+.macbookArea{
+	/*position: absolute;*/
+	width: 100%;
+	height: 18%;
+	background-color: #DEDEDE;
+}
+
+.macbookType {
+	position: absolute;
+	left: 20px;
+	font-size: 20px;
+	font-family: "Orbitron Light", Verdana, Tahoma;
+}
+
+.imacArea{
+	/*position: absolute;*/
+	width: 100%;
+	height: 18%;
+	background-color: #E9E9E9;
+}
+
+.imacType {
+	position: absolute;
+	left: 20px;
+	font-size: 20px;
+	font-family: "Orbitron Light", Verdana, Tahoma;
+}
+
+.incomeInfo {
+	position: relative;
+	left: 20px;
+	font-size: 20px;
+	font-family: "Orbitron Light", Verdana, Tahoma;
+	color: #92e;
 }
 
 .shopTitle {
@@ -94,3 +177,50 @@
 
 .appleButton:hover {
 	cursor: pointer;
+}
+
+.ipod {
+	position: absolute;
+	width: 50px;
+}
+
+.iphone {
+	position: absolute;
+	width: 50px;
+}
+
+.ipad {
+	position: absolute;
+	width: 70px;
+}
+
+.macbook {
+	position: absolute;
+	width: 120px;
+}
+
+.imac {
+	position: absolute;
+	width: 130px;
+}
+
+.link-btn, .link-btn:hover, .link-btn:visited, .link-btn:active, .link-btn:focus {
+	text-decoration: none;
+}
+.link-btn {
+	margin-left: 20px;
+	font-family: monospace;
+	font-size: 1.2em;
+	letter-spacing: -0.05em;
+	text-align: center;
+	color: #ffffff;
+	background-color: #92e;
+	background-image: none;
+	border-color: #285e8e;
+	border: none;
+	border-radius: 0;
+	padding: 0.5em 1em;
+	display: inline-block;
+	cursor: pointer;
+	box-shadow: -0.25em 0.25em rgba(0,0,0,0.4);
+}

@@ -5,6 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="./apple_clicker.css" />
 	<script src="./apple_clicker.js"></script>
+	<script src="./interact.js"></script>
 </head>
 <body>
 	<section class="sideBar">
@@ -17,16 +18,50 @@
 	</section>
 
 	<section class="main">
-		<p class="mainTitle">보유 중인 애플 기기</p>
+		<div class="mainTop">
+			<p class="mainTitle">보유 중인 애플 기기</p>
+		</div>
+		<div class="ipodArea">
+			<p class="ipodType">Ipod Nano <span class="incomeInfo">0</span></p>
+		</div>
+		<div class="iphoneArea">
+			<p class="iphoneType">Iphone 3GS <span class="incomeInfo">0</span></p>
+		</div>
+		<div class="ipadArea">
+			<p class="ipadType">Ipad 1 <span class="incomeInfo">0</span></p>
+		</div>
+		<div class="macbookArea">
+			<p class="macbookType">Macbook Air 11 <span class="incomeInfo">0</span></p>
+		</div>
+		<div class="imacArea">
+			<p class="imacType">Imac <span class="incomeInfo">0</span></p>
+		</div>
 	</section>
 
 	<section class="shopBar">
 		<p class="shopTitle">Apple Store</p>
 		<p class="shopTitleF">새로운 천리길을 위한 한 걸음.</p>
+
+		<button class="upApple link-btn">마우스 강화</button><span class="info"></span><br><br><br>
+
+		<button class="buyIpod link-btn">ipod 구매하기</button><span class="info"></span><br><br>
+		<button class="upIpod link-btn">ipod 신제품</button><span class="info"></span><br><br><br>
+
+		<button class="buyIphone link-btn">iphone 구매하기</button><span class="info"></span><br><br>
+		<button class="upIphone link-btn">iphone 신제품</button><span class="info"></span><br><br><br>
+
+		<button class="buyIpad link-btn">ipad 구매하기</button><span class="info"></span><br><br>
+		<button class="upIpad link-btn">ipad 신제품</button><span class="info"></span><br><br><br>
+
+		<button class="buyMacbook link-btn">macbook 구매하기</button><span class="info"></span><br><br>
+		<button class="upMacbook link-btn">macbook 신제품</button><span class="info"></span><br><br><br>
+
+		<button class="buyImac link-btn">imac 구매하기</button><span class="info"></span><br><br>
+		<button class="upImac link-btn">imac 신제품</button><span class="info"></span><br><br><br>
 	</section>
 
 	<script>
-		var game = new Game();
+		var game = new GameManager();
 	</script>
 </body>
 </html>
