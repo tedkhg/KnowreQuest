@@ -204,6 +204,19 @@
 	width: 130px;
 }
 
+.info {
+	margin-left: 20px;
+	color: #ffffff;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
+.infoValue {
+	color: #ffffff;
+	font-family: monospace;
+	font-size: 1.2em;
+}
+
 .link-btn, .link-btn:hover, .link-btn:visited, .link-btn:active, .link-btn:focus {
 	text-decoration: none;
 }

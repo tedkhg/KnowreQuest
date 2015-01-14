@@ -15,7 +15,7 @@ _._initialize = function() {
 	click_level = 1;
 	click_count = 0;
 	income = 0;
-	apples = 5000000;
+	apples = 99999999;
 	ipod_level = 1;
 	iphone_level = 1;
 	ipad_level = 1;
@@ -38,29 +38,38 @@ _._bindEvents = function() {
 	this.shop[0].querySelectorAll('.upApple')[0].onclick = function() {
 		if(click_level == 5) return;
 
-		if(apples >= 100 * click_level) {
+		if(click_level == 1 && apples >= 100) {
+			document.querySelectorAll('.infoValue')[0].innerHTML = '1000';
 			apples -= 100;
-			click_level += 1;
-			if(click_level == 2) {
-				click_income = 5;
-			} else if(click_level == 3) {
-				click_income = 20;
-			} else if(click_level == 4) {
-				click_income = 100;
-			} else if(click_level == 5) {
-				click_income = 500;
-			}
+			click_income = 5;
+		} else if(click_level == 2 && apples >= 1000) {
+			document.querySelectorAll('.infoValue')[0].innerHTML = '10000';
+			apples -= 1000;
+			click_income = 50;
+		} else if(click_level == 3 && apples >= 10000) {
+			document.querySelectorAll('.infoValue')[0].innerHTML = '100000';
+			apples -= 10000;
+			click_income = 500;
+		} else if(click_level == 4 && apples >= 100000) {
+			document.querySelectorAll('.info')[0].innerHTML = '<span class="infoValue"></span>Maximum';
+			apples -= 100000;
+			click_income = 5000;
+		} else {
+			return;
 		}
+
+		click_level += 1;
+		
 	}
 
 	// Ipod part
 	this.shop[0].querySelectorAll('.buyIpod')[0].onclick = function() {
 		if(document.querySelectorAll('.ipod').length > 49) return;
 
-		if(apples > 50 + document.querySelectorAll('.ipod').length * 50) {
-			apples -= 50 + document.querySelectorAll('.ipod').length * 50;
+		if(apples > 50 + document.querySelectorAll('.ipod').length * 30) {
+			apples -= 50 + document.querySelectorAll('.ipod').length * 30;
 			new Ipod(that, ipod_level);
-
+			document.querySelectorAll('.infoValue')[1].innerHTML = 50 + document.querySelectorAll('.ipod').length * 30;
 			if(ipod_level == 1) {
 				that.main[0].querySelectorAll('.ipodType')[0].innerHTML = 'Ipod Nano2 <span class="incomeInfo">'
 				+ (document.querySelectorAll('.ipod').length * 3).toFixed(0) + '</span>';
@@ -75,13 +84,17 @@ _._bindEvents = function() {
 				+ (document.querySelectorAll('.ipod').length * 24).toFixed(0) + '</span>';
 			}
 		} else return;
+
+		if(document.querySelectorAll('.ipod').length > 49)
+			document.querySelectorAll('.info')[1].innerHTML = '<span class="infoValue"></span>Maximum';
 	}
 	this.shop[0].querySelectorAll('.upIpod')[0].onclick = function() {
 		if(ipod_level == 4) return;
 
-		if(apples > ipod_level * 300) {
-			apples -= ipod_level * 300;
+		if(apples > Math.pow(3, ipod_level) * 200) {
+			apples -= Math.pow(3, ipod_level) * 200;
 			ipod_level += 1;
+			document.querySelectorAll('.infoValue')[2].innerHTML = Math.pow(3, ipod_level) * 200;
 		} else return;
 
 		if(ipod_level == 2) {
@@ -93,6 +106,7 @@ _._bindEvents = function() {
 		} else if(ipod_level == 4) {
 			that.main[0].querySelectorAll('.ipodType')[0].innerHTML = 'Ipod Touch <span class="incomeInfo">'
 			+ (document.querySelectorAll('.ipod').length * 24).toFixed(0) + '</span>';
+			document.querySelectorAll('.info')[2].innerHTML = '<span class="infoValue"></span>Maximum';
 		}
 
 		for(var i = 0; i < document.querySelectorAll('.ipod').length; i++) {
@@ -105,10 +119,10 @@ _._bindEvents = function() {
 	this.shop[0].querySelectorAll('.buyIphone')[0].onclick = function() {
 		if(document.querySelectorAll('.iphone').length > 49) return;
 
-		if(apples > 50 + document.querySelectorAll('.iphone').length * 50) {
-			apples -= 50 + document.querySelectorAll('.iphone').length * 50;
+		if(apples > 200 + document.querySelectorAll('.iphone').length * 120) {
+			apples -= 200 + document.querySelectorAll('.iphone').length * 120;
 			new Iphone(that, iphone_level);
-
+			document.querySelectorAll('.infoValue')[3].innerHTML = 200 + document.querySelectorAll('.iphone').length * 120;
 			if(iphone_level == 1) {
 				that.main[0].querySelectorAll('.iphoneType')[0].innerHTML = 'iphone 3GS <span class="incomeInfo">'
 				+ (document.querySelectorAll('.iphone').length * 15).toFixed(0) + '</span>';
@@ -123,13 +137,17 @@ _._bindEvents = function() {
 				+ (document.querySelectorAll('.iphone').length * 120).toFixed(0) + '</span>';
 			}
 		} else return;
+
+		if(document.querySelectorAll('.iphone').length > 49)
+			document.querySelectorAll('.info')[3].innerHTML = '<span class="infoValue"></span>Maximum';
 	}
 	this.shop[0].querySelectorAll('.upIphone')[0].onclick = function() {
 		if(iphone_level == 4) return;
 
-		if(apples > iphone_level * 300) {
-			apples -= iphone_level * 300;
+		if(apples > Math.pow(3, iphone_level) * 1000) {
+			apples -= Math.pow(3, iphone_level) * 1000;
 			iphone_level += 1;
+			document.querySelectorAll('.infoValue')[4].innerHTML = Math.pow(3, iphone_level) * 1000;
 		} else return;
 
 		if(iphone_level == 2) {
@@ -141,6 +159,7 @@ _._bindEvents = function() {
 		} else if(iphone_level == 4) {
 			that.main[0].querySelectorAll('.iphoneType')[0].innerHTML = 'iphone 6 <span class="incomeInfo">'
 			+ (document.querySelectorAll('.iphone').length * 120).toFixed(0) + '</span>';
+			document.querySelectorAll('.info')[4].innerHTML = '<span class="infoValue"></span>Maximum';
 		}
 
 		for(var i = 0; i < document.querySelectorAll('.iphone').length; i++) {
@@ -153,10 +172,10 @@ _._bindEvents = function() {
 	this.shop[0].querySelectorAll('.buyIpad')[0].onclick = function() {
 		if(document.querySelectorAll('.ipad').length > 49) return;
 
-		if(apples > 50 + document.querySelectorAll('.ipad').length * 50) {
-			apples -= 50 + document.querySelectorAll('.ipad').length * 50;
+		if(apples > 800 + document.querySelectorAll('.ipad').length * 480) {
+			apples -= 800 + document.querySelectorAll('.ipad').length * 480;
 			new Ipad(that, ipad_level);
-
+			document.querySelectorAll('.infoValue')[5].innerHTML = 800 + document.querySelectorAll('.ipad').length * 480;
 			if(ipad_level == 1) {
 				that.main[0].querySelectorAll('.ipadType')[0].innerHTML = 'ipad 1 <span class="incomeInfo">'
 				+ (document.querySelectorAll('.ipad').length * 75).toFixed(0) + '</span>';
@@ -171,13 +190,17 @@ _._bindEvents = function() {
 				+ (document.querySelectorAll('.ipad').length * 600).toFixed(0) + '</span>';
 			}
 		} else return;
+
+		if(document.querySelectorAll('.ipad').length > 49)
+			document.querySelectorAll('.info')[5].innerHTML = '<span class="infoValue"></span>Maximum';
 	}
 	this.shop[0].querySelectorAll('.upIpad')[0].onclick = function() {
 		if(ipad_level == 4) return;
 
-		if(apples > ipad_level * 300) {
-			apples -= ipad_level * 300;
+		if(apples > Math.pow(3, ipad_level) * 5000) {
+			apples -= Math.pow(3, ipad_level) * 5000;
 			ipad_level += 1;
+			document.querySelectorAll('.infoValue')[6].innerHTML = Math.pow(3, ipad_level) * 5000;
 		} else return;
 
 		if(ipad_level == 2) {
@@ -189,6 +212,7 @@ _._bindEvents = function() {
 		} else if(ipad_level == 4) {
 			that.main[0].querySelectorAll('.ipadType')[0].innerHTML = 'ipad air2 <span class="incomeInfo">'
 			+ (document.querySelectorAll('.ipad').length * 600).toFixed(0) + '</span>';
+			document.querySelectorAll('.info')[6].innerHTML = '<span class="infoValue"></span>Maximum';
 		}
 
 		for(var i = 0; i < document.querySelectorAll('.ipad').length; i++) {
@@ -201,10 +225,10 @@ _._bindEvents = function() {
 	this.shop[0].querySelectorAll('.buyMacbook')[0].onclick = function() {
 		if(document.querySelectorAll('.macbook').length > 49) return;
 
-		if(apples > 50 + document.querySelectorAll('.macbook').length * 50) {
-			apples -= 50 + document.querySelectorAll('.macbook').length * 50;
+		if(apples > 3500 + document.querySelectorAll('.macbook').length * 2000) {
+			apples -= 3500 + document.querySelectorAll('.macbook').length * 2000;
 			new Macbook(that, macbook_level);
-
+			document.querySelectorAll('.infoValue')[7].innerHTML = 3500 + document.querySelectorAll('.macbook').length * 2000;
 			if(macbook_level == 1) {
 				that.main[0].querySelectorAll('.macbookType')[0].innerHTML = 'Macbook Air 11 <span class="incomeInfo">'
 				+ (document.querySelectorAll('.macbook').length * 500).toFixed(0) + '</span>';
@@ -219,13 +243,17 @@ _._bindEvents = function() {
 				+ (document.querySelectorAll('.macbook').length * 4000).toFixed(0) + '</span>';
 			}
 		} else return;
+
+		if(document.querySelectorAll('.macbook').length > 49)
+			document.querySelectorAll('.info')[7].innerHTML = '<span class="infoValue"></span>Maximum';
 	}
 	this.shop[0].querySelectorAll('.upMacbook')[0].onclick = function() {
 		if(macbook_level == 4) return;
 
-		if(apples > macbook_level * 300) {
-			apples -= macbook_level * 300;
+		if(apples > Math.pow(3, macbook_level) * 25000) {
+			apples -= Math.pow(3, macbook_level) * 25000;
 			macbook_level += 1;
+			document.querySelectorAll('.infoValue')[8].innerHTML = Math.pow(3, macbook_level) * 25000;
 		} else return;
 
 		if(macbook_level == 2) {
@@ -237,6 +265,7 @@ _._bindEvents = function() {
 		} else if(macbook_level == 4) {
 			that.main[0].querySelectorAll('.macbookType')[0].innerHTML = 'Macbook Pro 15 <span class="incomeInfo">'
 			+ (document.querySelectorAll('.macbook').length * 4000).toFixed(0) + '</span>';
+			document.querySelectorAll('.info')[8].innerHTML = '<span class="infoValue"></span>Maximum';
 		}
 
 		for(var i = 0; i < document.querySelectorAll('.macbook').length; i++) {
@@ -249,10 +278,10 @@ _._bindEvents = function() {
 	this.shop[0].querySelectorAll('.buyImac')[0].onclick = function() {
 		if(document.querySelectorAll('.imac').length > 49) return;
 
-		if(apples > 50 + document.querySelectorAll('.imac').length * 50) {
-			apples -= 50 + document.querySelectorAll('.imac').length * 50;
+		if(apples > 15000 + document.querySelectorAll('.imac').length * 8000) {
+			apples -= 15000 + document.querySelectorAll('.imac').length * 8000;
 			new Imac(that, imac_level);
-
+			document.querySelectorAll('.infoValue')[9].innerHTML = 15000 + document.querySelectorAll('.imac').length * 8000;
 			if(imac_level == 1) {
 				that.main[0].querySelectorAll('.imacType')[0].innerHTML = '중고 iMac 21.5 <span class="incomeInfo">'
 				+ (document.querySelectorAll('.imac').length * 5000).toFixed(0) + '</span>';
@@ -267,13 +296,17 @@ _._bindEvents = function() {
 				+ (document.querySelectorAll('.imac').length * 40000).toFixed(0) + '</span>';
 			}
 		} else return;
+
+		if(document.querySelectorAll('.imac').length > 49)
+			document.querySelectorAll('.info')[9].innerHTML = '<span class="infoValue"></span>Maximum';
 	}
 	this.shop[0].querySelectorAll('.upImac')[0].onclick = function() {
 		if(imac_level == 4) return;
 
-		if(apples > imac_level * 300) {
-			apples -= imac_level * 300;
+		if(apples > Math.pow(3, imac_level) * 125000) {
+			apples -= Math.pow(3, imac_level) * 125000;
 			imac_level += 1;
+			document.querySelectorAll('.infoValue')[10].innerHTML = Math.pow(3, imac_level) * 125000;
 		} else return;
 
 		if(imac_level == 2) {
@@ -285,6 +318,7 @@ _._bindEvents = function() {
 		} else if(imac_level == 4) {
 			that.main[0].querySelectorAll('.imacType')[0].innerHTML = 'iMac 27 Retina 5K <span class="incomeInfo">'
 			+ (document.querySelectorAll('.imac').length * 40000).toFixed(0) + '</span>';
+			document.querySelectorAll('.info')[10].innerHTML = '<span class="infoValue"></span>Maximum';
 		}
 
 		for(var i = 0; i < document.querySelectorAll('.imac').length; i++) {
