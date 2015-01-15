@@ -1,11 +1,11 @@
 @font-face {
 	font-family: "Orbitron";
-	src: url('./Orbitron Black.otf') format("truetype");
+	src: url('../font/Orbitron Black.otf') format("truetype");
 }
 
 @font-face {
 	font-family: "Orbitron Light";
-	src: url('./Orbitron Light.otf') format("truetype");
+	src: url('../font/Orbitron Light.otf') format("truetype");
 }
 
 .sideBar {
@@ -215,6 +215,27 @@
 	color: #ffffff;
 	font-family: monospace;
 	font-size: 1.2em;
+}
+
+.save-btn {
+	position: absolute;
+	bottom: 20px;
+	left: 115px;
+	background-color: #f40 !important; 
+}
+
+.load-btn {
+	position: absolute;
+	bottom: 20px;
+	left: 218px;
+	background-color: #f40 !important; 
+}
+
+.tuto-btn {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	background-color: #f40 !important; 
 }
 
 .link-btn, .link-btn:hover, .link-btn:visited, .link-btn:active, .link-btn:focus {
