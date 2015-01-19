@@ -3,14 +3,14 @@ var obj = {
 	strTexts : " 은 정말 몸에 좋아요 ^^ ",
 	registerEvents : function() {
 		var that = this;
-		document.querySelectorAll('.sel')[0].onclick = function() {
-			console.log(this.innerHTML + that.strTexts);
-		}
-		document.querySelectorAll('.sel')[1].onclick = function() {
-			console.log(this.innerHTML + that.strTexts);
-		}
-		document.querySelectorAll('.sel')[2].onclick = function() {
-			console.log(this.innerHTML + that.strTexts);
+
+		for(var i = 0; i < 3; i++) {
+			(function(i) {
+				document.querySelectorAll('.sel')[i].onclick = function() {
+					console.log(i);
+					console.log(document.querySelectorAll('.sel')[i].innerHTML + that.strTexts);
+				}
+			})(i);
 		}
 	}
 }
