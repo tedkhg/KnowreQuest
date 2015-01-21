@@ -1,0 +1,15 @@
+textarea {
+	 padding:3px;
+	 width:100%;
+}
+
+.btn-cus {
+	width:23.5%;
+	height: 60px;
+	font-size: 30px !important;
+	margin-left: 1%;
+}
+
+.menu {
+	margin-bottom: 30px;
+}

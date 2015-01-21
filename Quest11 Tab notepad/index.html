@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="./css/main.css" />
+	<link rel="stylesheet" href="./css/bootstrap.min.css" />
+	<script src="./js/jquery-1.11.2.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="row menu">
+	<div class="col-md-1">
+	</div>
+	<div class="col-md-10">
+		<h1>간단한 텍스트 편집기</h1>
+		<button type="button" class="btn btn-success btn-cus" id="newFile">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New File
+		</button>
+		<button type="button" class="btn btn-info btn-cus" data-toggle="modal" id="saveFile">
+			<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save File
+		</button>
+		<button type="button" class="btn btn-primary btn-cus" id="saveAs">
+			<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> Save As
+		</button>
+		<button type="button" class="btn btn-danger btn-cus" id="deleteFile">
+			<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete File
+		</button>
+	</div>
+	<div class="col-md-1">
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-1">
+	</div>
+	<div class="col-md-2">
+		<div class="fileList">
+			<ul id="fileList">
+			</ul>
+		</div>
+	</div>
+
+	<div class="col-md-8">
+		<div role="tabpanel">
+
+		  <!-- Nav tabs -->
+		  <ul class="nav nav-tabs" role="tablist" id="tabs">
+		  </ul>
+
+		  <!-- Tab panes -->
+		  <div class="tab-content" id="texts">
+		  </div>
+
+		</div>
+	</div>
+	<div class="col-md-1">
+	</div>
+</div>
+
+<!-- Modal section-->
+<div class="modal fade" id="nameModal" tabindex="-1" role="dialog" aria-labelledby="nameModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="nameModalLabel">저장할 파일의 이름을 정해주세요.</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" id="file-name">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="save">Save File</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+	<script src="./js/main.js"></script>
+</html>
