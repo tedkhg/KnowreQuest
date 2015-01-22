@@ -65,7 +65,6 @@ _._setDom = function() {
 
 _._bindEvents = function() {
 	var that = this;
-	var isDown;
 
 	this.dom.ondblclick = function() {
 		if(that.isFolder) {
@@ -90,8 +89,8 @@ _._bindEvents = function() {
 			self.style.height = '100%';
 		}
 		self.onmouseup = function() {
-			self.style.width = '50px';
-			self.style.height = '50px';
+			self.style.width = '0px';
+			self.style.height = '0px';
 
 			self.onmousemove = null;
 		}
@@ -122,11 +121,15 @@ _._initialize = function() {
 
 _._setDom = function() {
 	this.dom = document.createElement("div");
-	this.dom.className = 'window';
-
-	this.dom.innerHTML = '<div class="title">New window</div><div class="resize"></div>'
-
+	this.dom.className = "division_folder";
 	this.desktop.dom[0].appendChild(this.dom);
+	
+	this.dom2 = document.createElement("div");
+	this.dom2.className = 'window';
+
+	this.dom2.innerHTML = '<div class="title">New window</div><div class="resize"></div>'
+
+	this.dom.appendChild(this.dom2);
 	// this.dom2 = document.querySelectorAll('.resize');
 };
 
@@ -138,41 +141,49 @@ _._bindEvents = function() {
 		that.desktop.dom[0].removeChild(this);
 	};
 
-	this.dom.onmousedown = function() {
+	this.dom.onmousedown = function(e) {
 		var self = this;
-
+		var dx = 0, dy = 0;
+		var x = e.pageX;
+		var y = e.pageY;
 		this.onmousemove = function(e) {
-			self.style.left = e.pageX - 25 + 'px';
-			self.style.top = e.pageY - 25 + 'px';
+			dx = e.pageX - x;
+			dy = e.pageY - y;
+			x = e.pageX;
+			y = e.pageY;
+
+			console.log(self.childNodes[0]);
+			self.childNodes[0].style.left = Number((self.childNodes[0].style.left).split('p')[0]) + dx + 'px';
+			self.childNodes[0].style.top = Number((self.childNodes[0].style.top).split('p')[0]) + dy + 'px';
+			self.style.width = '100%';
+			self.style.height = '100%';
 		}
 		self.onmouseup = function() {
+			self.style.width = '0px';
+			self.style.height = '0px';
+
 			self.onmousemove = null;
 		}
+
 	};
 
-	this.dom.ondragstart = function() { 
+	this.dom.ondragstart = function() {
 		return false
 	};
 
-// 	this.dom2[0].onmousedown = function() {
-// 		console.log('push');
+	// this.dom.onmousedown = function() {
+	// 	var self = this;
 
-// 		this.onmousemove = function(e) {
-// 			var res = that.dom;
-// 			if(e.pageX > res.style.left + res.style.width - 5) {
-// 				res.style.width = res.style.width + 10 + 'px';
-// 				// res.style.height = res.style.height + 10 + 'px';
-// 			} else {
-// 				res.style.width = res.style.width - 10 + 'px';
-// 			}
-// 		}
-// 		self.onmouseup = function() {
-// 			self.onmousemove = null;
-// 		}
-// 	};
+	// 	this.onmousemove = function(e) {
+	// 		self.style.left = e.pageX - 25 + 'px';
+	// 		self.style.top = e.pageY - 25 + 'px';
+	// 	}
+	// 	self.onmouseup = function() {
+	// 		self.onmousemove = null;
+	// 	}
+	// };
 
-// 	this.dom2.ondragstart = function() { 
-// 		console.log('drag');
-// 		// return false
-// 	};
+	// this.dom.ondragstart = function() { 
+	// 	return false
+	// };
 };
