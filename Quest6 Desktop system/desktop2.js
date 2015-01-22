@@ -49,18 +49,23 @@ _._initialize = function() {
 };
 
 _._setDom = function() {
-	this.dom = document.createElement("img");
-	this.dom.className = 'icon';
-	if(this.isFolder) {
-		this.dom.src = './folder.png';
-	} else {
-		this.dom.src = './search.png';
-	}
+	this.dom = document.createElement("div");
+	this.dom.className = 'division';
 	this.desktop.dom[0].appendChild(this.dom);
+
+	this.dom2 = document.createElement("img");
+	this.dom2.className = 'icon';
+	if(this.isFolder) {
+		this.dom2.src = './folder.png';
+	} else {
+		this.dom2.src = './search.png';
+	}
+	this.dom.appendChild(this.dom2);
 };
 
 _._bindEvents = function() {
 	var that = this;
+	var isDown;
 
 	this.dom.ondblclick = function() {
 		if(that.isFolder) {
@@ -68,18 +73,32 @@ _._bindEvents = function() {
 		}
 	};
 
-	this.dom.onmousedown = function() {
+	this.dom.onmousedown = function(e) {
 		var self = this;
+		var dx = 0, dy = 0;
+		var x = e.pageX;
+		var y = e.pageY;
 		this.onmousemove = function(e) {
-			self.style.left = e.pageX - 25 + 'px';
-			self.style.top = e.pageY - 25 + 'px';
+			dx = e.pageX - x;
+			dy = e.pageY - y;
+			x = e.pageX;
+			y = e.pageY;
+
+			self.childNodes[0].style.left = Number((self.childNodes[0].style.left).split('p')[0]) + dx + 'px';
+			self.childNodes[0].style.top = Number((self.childNodes[0].style.top).split('p')[0]) + dy + 'px';
+			self.style.width = '100%';
+			self.style.height = '100%';
 		}
 		self.onmouseup = function() {
+			self.style.width = '50px';
+			self.style.height = '50px';
+
 			self.onmousemove = null;
 		}
+
 	};
 
-	this.dom.ondragstart = function() { 
+	this.dom.ondragstart = function() {
 		return false
 	};
 };
