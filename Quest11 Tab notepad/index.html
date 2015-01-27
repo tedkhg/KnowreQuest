@@ -11,7 +11,7 @@
 <div class="row menu">
 	<div class="col-md-1">
 	</div>
-	<div class="col-md-10">
+	<div class="col-md-10 buttons">
 		<h1>간단한 텍스트 편집기</h1>
 		<button type="button" class="btn btn-success btn-cus" id="newFile">
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New File
@@ -25,6 +25,29 @@
 		<button type="button" class="btn btn-danger btn-cus" id="deleteFile">
 			<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete File
 		</button>
+
+		<!-- Modal section-->
+		<div class="modal fade" id="nameModal" tabindex="-1" role="dialog" aria-labelledby="nameModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="nameModalLabel">저장할 파일의 이름을 정해주세요.</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form>
+		          <div class="form-group">
+		            <input type="text" class="form-control" id="file-name">
+		          </div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary" id="save">Save File</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	</div>
 	<div class="col-md-1">
 	</div>
@@ -56,28 +79,9 @@
 	</div>
 </div>
 
-<!-- Modal section-->
-<div class="modal fade" id="nameModal" tabindex="-1" role="dialog" aria-labelledby="nameModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="nameModalLabel">저장할 파일의 이름을 정해주세요.</h4>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <input type="text" class="form-control" id="file-name">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="save">Save File</button>
-      </div>
-    </div>
-  </div>
-</div>
 </body>
 	<script src="./js/main.js"></script>
+	<script>
+		var notepad = new Notepad();
+	</script>
 </html>
