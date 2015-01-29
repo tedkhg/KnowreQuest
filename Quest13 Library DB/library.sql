@@ -33,11 +33,23 @@ CREATE TABLE Info_borrow (
     id INT(11) NOT NULL AUTO_INCREMENT,
     bid INT(11) NOT NULL,
     uid INT(11) NOT NULL,
-    borrow TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    borrow TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     turnin TIMESTAMP,
+    isActive bool DEFAULT true,
     PRIMARY KEY (id),
     FOREIGN KEY (bid)
         REFERENCES Books (bid),
     FOREIGN KEY (uid)
         REFERENCES User (uid)
 );
+
+DELIMITER ///
+CREATE TRIGGER updateDate
+BEFORE UPDATE ON Info_borrow
+FOR EACH ROW
+    BEGIN
+	IF NEW.isActive <> OLD.isActive THEN
+		SET NEW.turnin = CURRENT_TIMESTAMP;
+	END IF;
+END;
+///
