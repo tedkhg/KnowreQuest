@@ -20,15 +20,6 @@ CREATE TABLE User (
     PRIMARY KEY(uid)
 );
 
-CREATE TABLE Info_borrow (
-	id int(11) NOT NULL AUTO_INCREMENT,
-    bid int(11) NOT NULL,
-    uid int(11) NOT NULL,
-    PRIMARY KEY(id),
-    FOREIGN KEY(bid) REFERENCES Books(bid),
-    FOREIGN KEY(uid) REFERENCES User(uid)
-);
-
 CREATE TABLE Info_author (
 	id int(11) NOT NULL AUTO_INCREMENT,
     bid int(11) NOT NULL,
@@ -36,4 +27,17 @@ CREATE TABLE Info_author (
     PRIMARY KEY(id),
     FOREIGN KEY(bid) REFERENCES Books(bid),
     FOREIGN KEY(aid) REFERENCES Author(aid)
+);
+
+CREATE TABLE Info_borrow (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    bid INT(11) NOT NULL,
+    uid INT(11) NOT NULL,
+    borrow TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    turnin TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (bid)
+        REFERENCES Books (bid),
+    FOREIGN KEY (uid)
+        REFERENCES User (uid)
 );
