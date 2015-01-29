@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Library System</title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>History of Book number <%- num %></h1>
+
+	<ul>
+	<% for(var i = 0; i < history.length; i++) { %>
+		<% if(history[i].turnin == '0000-00-00 00:00:00') { %>
+			<li><%- history[i].title %> : <%- history[i].id %> - <%- history[i].borrow %> ~ </li>
+		<% } else { %>
+			<li><%- history[i].title %> : <%- history[i].id %> - <%- history[i].borrow %> ~ <%- history[i].turnin %></li>
+		<% } %>
+	<% } %>
+	</ul>
+</body>
+</html>
