@@ -1,0 +1,17 @@
+.menu {
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding:50px;
+	width: 20%;
+	height: 100%;
+	background-color: rgba(255, 0, 0, 0.2);
+}
+
+.board {
+	position: absolute;
+	left: 20%;
+	top: 0;
+	width: 70%;
+	height: 100%;
+}
