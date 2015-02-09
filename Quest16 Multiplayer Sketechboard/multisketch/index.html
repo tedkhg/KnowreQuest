@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sketchboard</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="./css/sketch.css" />
+	<script type="text/javascript" src="./js/jquery-1.11.2.js"></script>
+	<link rel="stylesheet" href="./css/bootstrap.min.css" />
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/main.js"></script>
+</head>
+<body>
+	<section onmousedown="return false" class="menu">
+		<h1>Sketch Board</h1>
+		<button type="button" class="btn btn-success btn-cus" id="drawCircle">
+			<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+		</button>
+		<button type="button" class="btn btn-success btn-cus" id="drawSquare">
+			<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+		</button>
+		<button type="button" class="btn btn-success btn-cus" id="drawTriangle">
+			<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+		</button>
+		<br>
+		<p>더블클릭으로 도형 편집을 활성/비활성화 할 수 있습니다.</p>
+		<p>방향키로 활성화된 도형을 이동시킬 수 있습니다.</p>
+		<p>delete키를 통해 활성화된 도형을 제거할 수 있습니다.</p>
+		<p>esc키를 통해 활성화된 도형을 모두 비활성화 시킬 수 있습니다.</p>
+	</section>
+
+	<section class="board">
+
+	</section>
+
+
+	<script>
+		document.ondblclick = function(evt) {
+		    if (window.getSelection)
+		        window.getSelection().removeAllRanges();
+		    else if (document.selection)
+		        document.selection.empty();
+		}
+
+		var sketch = new Sketch();
+	</script>
+</body>
+</html>
