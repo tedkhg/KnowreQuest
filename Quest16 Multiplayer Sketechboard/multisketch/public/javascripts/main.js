@@ -18,7 +18,7 @@ _._initialize = function() {
 _._bindEvents = function() {
 	var that = this;
 	this.menu[0].querySelectorAll('#drawCircle')[0].onclick = function() {
-		var content = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"' +
+		var content = '<svg xmlns="http://www.w3.org/2000/svg" class="pic" version="1.1"' +
 	    'style="left:20px;top:200px;width:200px;height:200px;position:absolute" id="svg' + id +'">' +
 	    '<ellipse cx="50%" cy="50%" rx="50%" ry="50%" ' +
 	      'stroke="#FF0000" stroke-width="1" fill="#800000" /></svg>';
@@ -29,7 +29,7 @@ _._bindEvents = function() {
 	    id++;
 	}
 	this.menu[0].querySelectorAll('#drawSquare')[0].onclick = function() {
-		var content = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"' +
+		var content = '<svg xmlns="http://www.w3.org/2000/svg" class="pic" version="1.1"' +
 	    'style="left:20px;top:200px;width:200px;height:200px;position:absolute" id="svg' + id +'">' +
 	    '<rect x="0%" y="0%" width="100%" height="100%" ' +
 	      'stroke="#FF0000" stroke-width="1" fill="#800000" /></svg>';
@@ -40,7 +40,7 @@ _._bindEvents = function() {
 	    id++;
 	}
 	this.menu[0].querySelectorAll('#drawTriangle')[0].onclick = function() {
-		var content = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"' +
+		var content = '<svg xmlns="http://www.w3.org/2000/svg" class="pic" version="1.1"' +
 	    'viewbox="0 0 200 200" style="left:20px;top:200px;width:100%;height:100%;position:absolute" id="svg' + id +'">' +
 	    '<path d="M 0 0 L 200 0 L 100 200" ' +
 	      'stroke="#FF0000" stroke-width="1" fill="#800000" /></svg>';
@@ -108,17 +108,17 @@ _._bindEvents = function() {
 		console.log(cid + type);
 		var content = "";
 		if(type == 'circle') {
-			content = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"' +
+			content = '<svg xmlns="http://www.w3.org/2000/svg" class="pic" version="1.1"' +
 		    'style="left:20px;top:200px;width:200px;height:200px;position:absolute" id="svg' + cid +'">' +
 		    '<ellipse cx="50%" cy="50%" rx="50%" ry="50%" ' +
 		      'stroke="#FF0000" stroke-width="1" fill="#800000" /></svg>';
 		} else if(type == 'square') {
-			content = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"' +
+			content = '<svg xmlns="http://www.w3.org/2000/svg" class="pic" version="1.1"' +
 		    'style="left:20px;top:200px;width:200px;height:200px;position:absolute" id="svg' + cid +'">' +
 		    '<rect x="0%" y="0%" width="100%" height="100%" ' +
 		      'stroke="#FF0000" stroke-width="1" fill="#800000" /></svg>';
 		} else if(type =='triangle') {
-			content = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"' +
+			content = '<svg xmlns="http://www.w3.org/2000/svg" class="pic" version="1.1"' +
 		    'viewbox="0 0 200 200" style="left:20px;top:200px;width:100%;height:100%;position:absolute" id="svg' + cid +'">' +
 		    '<path d="M 0 0 L 200 0 L 100 200" ' +
 		      'stroke="#FF0000" stroke-width="1" fill="#800000" /></svg>';
@@ -130,22 +130,41 @@ _._bindEvents = function() {
 
 	this.socket.on('new user', function() {
 		console.log('new user!');
-		if(that.id != 0) {
-			console.log('init! :' + id);
-			that.socket.emit('init', id);
-		}
-		// for(var i = 0; i < id; i++) { 
-		// 	if(document.getElementById('svgo' + i )) {
-		// 		var el =document.getElementById('svgo' + i ));
-		// 		that.socket.emit('init', id, arr);
-		// 	}
+		// if(that.id != 0) {
+		// 	console.log('init! :' + id);
+		// 	that.socket.emit('init', id);
 		// }
+		var arr = [];
+		var pics = document.getElementsByClassName('internalWrapper');
+
+		for(var i = 0; i < pics.length; i++) {
+			var elem = [];
+			elem.push(pics[i].innerHTML);
+			elem.push(parseInt(pics[i].parentNode.style.left.split('px')[0]) + 8);
+			elem.push(parseInt(pics[i].parentNode.style.top.split('px')[0]) + 8);
+			elem.push(pics[i].childNodes[0].id);
+			arr.push(elem);
+		}
+		that.socket.emit('init', id, arr);
 
 	})
 
-	this.socket.on('init', function(cid) {
+	this.socket.on('init', function(cid, arr) {
 		console.log('init:' + cid);
+		console.log(arr);
 		id = cid;
+		if(arr) {
+			for(var i = 0; i < arr.length; i++) {
+				var content = arr[i][0]; 
+
+				that.board.insertAdjacentHTML('beforeend', content);
+		    	var obj = new SVGObject('#' + arr[i][3], that);
+		    	
+		    	that.objs.push(obj);
+		    	obj.update(arr[i][1], arr[i][2], 0, 0);
+		    	obj.adjust();
+			}
+		}
 	})
 
 	this.socket.on('move', function(cid, type) {
@@ -203,7 +222,7 @@ _._bindEvents = function() {
 	})
 }
 
-var SVGObject = function(element, sketch) {
+var SVGObject = function(element, sketch, id) {
 	this.par = sketch;
 	this.origin = element;
 	this.isEditable = true;
@@ -227,9 +246,10 @@ var SVGObject = function(element, sketch) {
 var _ = SVGObject.prototype;
 
 _._initialize = function() {
-	this.id = id;
+	this.id = this.origin.split('svg')[1];
+	console.log(this.id);
 	this.currState = this.state.None;
-	this.wrapStr = '<div style="position:relative" id="svgo' + this.id + '">' +
+	this.wrapStr = '<div style="position:absolute" id="svgo' + this.origin.split('svg')[1] + '">' +
         '<div style="left:8px;top:8px;position:absolute" class="internalWrapper"></div>' +
         '</div>';
     this.borderStr = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"' +
@@ -255,7 +275,7 @@ _._initialize = function() {
     '<circle cx="100%" cy="100%" r="8" stroke="#000" stroke-width="0" fill="#000" opacity="0" class="actionTrigger bottomRightActionTrigger" style="cursor:se-resize" />' +
     '</svg>';
 
-    this.exStr = '#svgo' + this.id;
+    this.exStr = '#svgo' + this.origin.split('svg')[1];
     this.inStr = this.exStr + ' .internalWrapper';
 
     this.moveActionTriggerQueryStr = this.exStr + ' .moveActionTrigger';
@@ -291,11 +311,11 @@ _._setDom = function() {
 	
 	$(this.exStr).css('left', wrapLeft);
 	$(this.exStr).css('top', wrapTop);
-	$(this.exStr).css('position', $(this.origin).css('position'));
+	$(this.exStr).css('position', $(this.origin).css('absolute'));
 
 	$(this.origin).css('left', 0);
     $(this.origin).css('top', 0);
-    $(this.origin).css('position', 'relative');	
+    $(this.origin).css('position', 'absolute');	
 }
 
 _._bindEvents = function() {

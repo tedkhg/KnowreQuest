@@ -14,9 +14,10 @@ io.on('connection', function(socket) {
 		socket.broadcast.emit('create', cid, type);
 	});
 
-	socket.on('init', function(cid) {
+	socket.on('init', function(cid, arr) {
 		console.log('get id:' + cid);
-		socket.broadcast.emit('init', cid);
+		console.log(arr);
+		socket.broadcast.emit('init', cid, arr);
 	})
 
 	socket.on('move', function(cid, type) {
