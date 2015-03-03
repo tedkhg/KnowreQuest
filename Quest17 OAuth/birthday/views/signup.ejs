@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>가입하기</title>
+</head>
+<body>
+	<form action="/signup_ok" method="POST">
+		ID : <input type="text" name="account" /><br>
+		PW : <input type="password" name="pass" /><br>
+		<input type="hidden" name="month" value="<%- m %>"/>
+		<input type="hidden" name="day" value="<%- d %>"/>
+		<input type="submit" value="가입하기"/>
+	</form><br>
+	<%- msg %>
+</body>
+</html>

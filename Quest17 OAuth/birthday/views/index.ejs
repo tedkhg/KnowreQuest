@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>당신의 생일</title>
+	
+</head>
+	<script>
+	window.onload = function() {
+		document.getElementById("signup").onclick = function() {
+			window.location.replace('/auth/google');
+		}
+		document.getElementById("logout").onclick = function() {
+			window.location.replace('/logout');
+		}
+	}
+	</script>
+<body>
+	
+	<% if(!birth) { %>
+	<form action="/login" method="POST">
+		ID : <input type="text" name="account" /><br>
+		PW : <input type="password" name="pass" /><br>
+		<input type="submit" value="로그인"/>
+	</form>
+	<% } else { %>
+		<button id="logout">로그아웃</button><br>
+	<% } %>
+	<button id="signup">회원가입</button><br>
+	<%- hash-%><br>
+	<% if(birth) { %>
+		Your birthday is <%- birth %>
+	<% } %>
+</body>
+	
+</html>

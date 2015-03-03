@@ -34,3 +34,4 @@ npm-debug.log
 
 # Secret File
 Quest14 Library System/app/secret.json
+Quest17 OAuth/birthday/secret.json
